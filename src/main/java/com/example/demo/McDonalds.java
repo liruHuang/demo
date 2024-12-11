@@ -1,11 +1,8 @@
 package com.example.demo;
 
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
-
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 
 public class McDonalds {
     Map<String, Item> menu = new HashMap<>();

@@ -1,7 +1,7 @@
 package com.example.demo;
 
-import com.example.demo.Product.Product;
-import com.example.demo.Product.ProductRepository;
+import com.example.demo.product.Product;
+import com.example.demo.product.ProductRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

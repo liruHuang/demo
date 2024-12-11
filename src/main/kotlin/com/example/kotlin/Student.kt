@@ -3,7 +3,7 @@ package com.example.kotlin
 import java.util.*
 
 fun main() {
-    val stu = Student("Annie", 50, 66)
+    val stu = Student("Annie", 80, 66)
     stu.print()
     val t = 123
     println("test: $t")
@@ -18,15 +18,19 @@ fun main() {
 
 class Student(var name : String?, var english : Int, var math : Int) {
     fun print() {
+/*
         print(
             name + "\t" + english + "\t" + math + "\t"
                     + getAverage() + "\t"
                     + if (getAverage() >= 60) "PASS" else "FAILED")
-        println("\t" + grading())
+*/
+        println("$name\t$english\t$math\t${getAverage()}\t${passOrFailed()}\t${grading()}")
 
     }
 
     fun getAverage() = (english + math) / 2
+
+    fun passOrFailed() = if (getAverage() >= 60) "PASS" else "FAILED"
 
     fun grading() =  when (getAverage()) {
         in 90..100 -> 'A'
