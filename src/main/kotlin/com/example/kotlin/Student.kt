@@ -3,7 +3,7 @@ package com.example.kotlin
 import java.util.*
 
 fun main() {
-    val stu = Student("Annie", 88, 66)
+    val stu = Student("Annie", 50, 66)
     stu.print()
     val t = 123
     println("test: $t")
@@ -16,19 +16,49 @@ fun main() {
 
 
 
-class Student(var name : String?, var english : Int, var math : Int){
-    fun print(){
-        println(name + "\t" + english + "\t" + math + "\t"
-                + getAverage() + "\t"
-                + if(getAverage() >= 60) "PASS" else "FAILED")
+class Student(var name : String?, var english : Int, var math : Int) {
+    fun print() {
+        print(
+            name + "\t" + english + "\t" + math + "\t"
+                    + getAverage() + "\t"
+                    + if (getAverage() >= 60) "PASS" else "FAILED")
+        println("\t" + grading())
+
     }
 
-    fun getAverage() :Int {
-        return (english + math) / 2
+    fun getAverage() = (english + math) / 2
+
+    fun grading() =  when (getAverage()) {
+        in 90..100 -> 'A'
+        in 80..89 -> 'B'
+        in 70..79 -> 'C'
+        in 60..69 -> 'D'
+        else -> 'F'
     }
 
-    fun highest() : Int{
-        var max = if(english > math) {
+
+/*
+    fun grading(): Char {
+        var grading = when (getAverage()) {
+            in 90..100 -> 'A'
+            in 80..89 -> 'B'
+            in 70..79 -> 'C'
+            in 60..69 -> 'D'
+            else -> 'F'
+        }
+        return grading
+    }
+*/
+
+
+    fun highest() = if (english > math) {
+            println("english")
+            english
+        } else {
+            println("math")
+            math
+        }
+/*        var max = if (english > math) {
             println("english")
             english
         } else {
@@ -36,30 +66,35 @@ class Student(var name : String?, var english : Int, var math : Int){
             math
         }
         return max
+*/
 
-       /*if(english > math) {
-            max = english
-        }else{
-            max =math
-        }*/
-    }
+/*      if(english > math) {
+        max = english
+         }else{
+        max =math
+*/
 
-    fun check(){
+
+    fun check() = println(name?.length)
+
+/*
+    fun check() {
         println(name?.length)
     }
-}
+*/
 
-private fun userInput() {
-    var scanner = Scanner(System.`in`)
+    private fun userInput() {
+        var scanner = Scanner(System.`in`)
 //    print("please enter your name: ");
 //    var name = scanner.next();
-    var name = null
-    print("enter your english score: ")
-    var english = scanner.nextInt();
-    print("enter your math score: ")
-    var math = scanner.nextInt();
-    val stu = Student(name, english, math)
-    stu.print();
-    stu.check()
+        var name = null
+        print("enter your english score: ")
+        var english = scanner.nextInt();
+        print("enter your math score: ")
+        var math = scanner.nextInt();
+        val stu = Student(name, english, math)
+        stu.print();
+        stu.check();
+    }
 }
 
