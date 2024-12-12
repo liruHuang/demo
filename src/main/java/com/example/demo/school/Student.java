@@ -1,5 +1,6 @@
 package com.example.demo.school;
 
+
 public class Student {
     String id;
     String name;
@@ -14,6 +15,8 @@ public class Student {
     }
 
     public void print(){
+//        com.example.kotlin.Student.getPass();
+
         int average = getAverage();
         System.out.println(name + "\t" + english + "\t" + math + "\t"
                         + getAverage() + "\t" + ((average >= pass) ? "PASS" : "FAILED"));

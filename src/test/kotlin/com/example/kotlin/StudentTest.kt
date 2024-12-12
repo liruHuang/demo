@@ -1,5 +1,6 @@
 package com.example.kotlin
 
+import com.example.kotlin.student.Student
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 

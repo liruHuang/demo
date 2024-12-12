@@ -1,10 +1,18 @@
-package com.example.kotlin
+package com.example.kotlin.student
 
 import java.util.*
 
 fun main() {
+    Student.pass = 50;
+
     val stu = Student("Annie", 80, 66)
+    val stu2 = Student("Hank", 65, 43)
+    val stu3 = Student("Eric", 45, 87)
+    val gstu = GraduatesStudent("Jack", 79,45,50)
     stu.print()
+    stu2.print()
+    stu3.print()
+    gstu.print()
     val t = 123
     println("test: $t")
     println("Highest score : ${stu.highest()}")
@@ -14,10 +22,30 @@ fun main() {
 //    userInput()
 }
 
+class GraduatesStudent(name : String?, english : Int , math : Int, var thesis: Int) : Student(name, english, math) {
+    var pass = 70;
+    override fun print() {
+        println("$name\t$english\t$math\t$thesis\t${getAverage()}\t${passOrFailed()}\t${grading()}")
+    }
+
+    override fun getAverage() = (math + english + thesis) / 3
+
+    override fun passOrFailed() = if (getAverage() >= pass) "PASS" else "FAILED"
+}
 
 
-class Student(var name : String?, var english : Int, var math : Int) {
-    fun print() {
+
+open class Student(var name : String?, var english : Int, var math : Int) {
+
+    companion object {
+        @JvmStatic
+        var pass = 60;
+        fun test() {
+            println("test")
+        }
+    }
+
+    open fun print() {
 /*
         print(
             name + "\t" + english + "\t" + math + "\t"
@@ -28,9 +56,9 @@ class Student(var name : String?, var english : Int, var math : Int) {
 
     }
 
-    fun getAverage() = (english + math) / 2
+    open fun getAverage() = (english + math) / 2
 
-    fun passOrFailed() = if (getAverage() >= 60) "PASS" else "FAILED"
+    open fun passOrFailed() = if (getAverage() >= pass) "PASS" else "FAILED"
 
     fun grading() =  when (getAverage()) {
         in 90..100 -> 'A'
