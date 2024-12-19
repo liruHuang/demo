@@ -30,10 +30,9 @@ private fun write() {
             it.println("third line")
             }
     */
-
-    File("output.txt").bufferedWriter().use {
-        it.write("1111111\n")
-        it.write("1111111\n")
-        it.write("1111111\n")
+    File("output.txt").bufferedWriter().use{
+        it.write("1st 1111111")
+        it.write("2nd 22222222")
+        it.write("3rd 33333333")
     }
 }

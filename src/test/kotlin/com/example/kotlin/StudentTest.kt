@@ -1,25 +1,27 @@
 package com.example.kotlin
 
-import com.example.kotlin.student.Student
+import com.example.kotlin.student.Student2
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
+
 class StudentTest {
     @Test
-    fun highestTest(){
-        val student = Student("Annie", 80, 50)
-        Assertions.assertEquals(80, student.highest())
-    }
-    @Test
     fun averageTest(){
-        val student = Student("Annie", 80, 50)
-        Assertions.assertEquals((80+50)/2, student.getAverage())
+        val stu = Student2("Annie", 80, 60)
+        Assertions.assertEquals((80+60)/2, stu.getAverage())
+    }
+
+    @Test
+    fun highestTest(){
+        val stu = Student2("Annie", 80, 60)
+        Assertions.assertEquals(80,stu.highest())
     }
 
     @Test
     fun gradingTest(){
-        val student = Student("Annie", 80, 50)
-        Assertions.assertEquals('D', student.grading())
+        val stu = Student2("Annie", 80, 60)
+        Assertions.assertEquals('C',stu.grading())
     }
 
 
