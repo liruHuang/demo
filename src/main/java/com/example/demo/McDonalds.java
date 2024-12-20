@@ -1,14 +1,17 @@
 package com.example.demo;
 
+import jakarta.persistence.criteria.CriteriaBuilder;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class McDonalds {
-    Map<Integer, Item> menu = new HashMap<>();
-    public McDonalds(){
-        File file = new File("mcdonalds.txt");
 
+    Map<Integer, Item> menu = new HashMap<>();
+    public McDonalds() {
+
+        File file = new File("mcdonalds.txt");
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             String line = br.readLine();
@@ -25,23 +28,20 @@ public class McDonalds {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
     }
 
-    public void printMenu(){
+    public void printMenu() {
         for (Map.Entry<Integer, Item> itemEntry : menu.entrySet()) {
             System.out.println(itemEntry.getValue());
         }
     }
 
-
     public static void main(String[] args) {
         McDonalds mcdonalds = new McDonalds();
         mcdonalds.printMenu();
     }
-
-
 }
-
 
 class Item {
     int id;
@@ -51,7 +51,7 @@ class Item {
 
     @Override
     public String toString() {
-        return id+","+name+","+calories+","+price;
+        return id + "," + name + "," + calories + "," + price + "," + price;
     }
 
     public Item(int id, String name, int calories, int price) {
