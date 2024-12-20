@@ -13,32 +13,41 @@ public class DayOfYear {
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH)+1;
         int day = calendar.get(Calendar.DAY_OF_MONTH);
-        BufferedReader br = new BufferedReader((new InputStreamReader(System.in)));
+        BufferedReader br =  new BufferedReader(new InputStreamReader(System.in));
         try {
-            System.out.println("please enter the year(" + year + ")");
+            System.out.println("please enter year: (" + year + ")");
             String yearString = br.readLine();
-            year = (yearString.length()>0) ? Integer.parseInt(yearString) : year;
+            year = (yearString.length() > 0) ? Integer.parseInt(yearString) : year;
+            if (year % 4 ==0 && year % 100 !=0 || year % 400 ==0){
+                months[1]=29;
+            }
             System.out.println(year);
-            System.out.println("please enter the month(" + month + ")");
+            System.out.println("please enter month: (" + month + ")");
             String monthString = br.readLine();
-            year = (monthString.length()>0) ? Integer.parseInt(yearString) : year;
+            month = (monthString.length() > 0) ? Integer.parseInt(monthString) : month;
             System.out.println(month);
-            System.out.println("please enter the day(" + day + ")");
+            System.out.println("please enter day: ( " + day + ")");
             String dayString = br.readLine();
-            year = (dayString.length()>0) ? Integer.parseInt(yearString) : year;
+            day = (dayString.length() > 0) ? Integer.parseInt(dayString) :day;
+            if(day> months[month-1]){
+                System.out.println("enter a valid day");
+                return;
+            }
             System.out.println(day);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
         int days = 0;
-        for (int i = 0 ; i < months.length-1 ; i ++){
-            days = days + months[i];
+        for (int i = 0 ; i < month-1 ; i ++){
+            days += months[i];
         }
-        days += day;
-        if (year % 400 ==0 || (year % 4 ==0 && year % 100 !=0)){
-            days = days +1;
+        days += day ;
+ /*       if (year % 4 ==0 && year % 100 !=0 || year % 400 ==0) {
+            days ++ ;
         }
+*/
         System.out.println(days);
+
     }
 
 
